@@ -1,4 +1,4 @@
-# Showcase Tutorial
+# ShowcaseView for Android
 It's a small library for showcase and highlight specific parts of your app to the user. 
 
 ![alt tag](https://raw.githubusercontent.com/Seishin/showcase-tutorial/master/Images/Screenshot_1.png) ![alt tag](https://raw.githubusercontent.com/Seishin/showcase-tutorial/master/Images/Screenshot_2.png)
