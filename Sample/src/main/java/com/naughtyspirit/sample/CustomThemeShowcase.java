@@ -19,54 +19,36 @@
 
 package com.naughtyspirit.sample;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import com.naughtyspirit.showcaseview.ShowcaseView;
 import com.naughtyspirit.showcaseview.targets.Target;
 import com.naughtyspirit.showcaseview.targets.TargetView;
-import com.naughtyspirit.showcaseview.targets.TargetView.ShowcaseType;
-import com.naughtyspirit.showcaseview.utils.PositionsUtil.ItemPosition;
+import com.naughtyspirit.showcaseview.utils.PositionsUtil;
 
 /**
  * Created by Seishin <atanas@naughtyspirit.co>
- * on 2/10/15.
- *
+ * on 2/18/15.
  * NaughtySpirit 2015
  */
-public class MainActivity extends ActionBarActivity implements OnClickListener{
+public class CustomThemeShowcase extends ActionBarActivity {
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_custom_theme);
 
         Button btn = (Button) findViewById(R.id.btn);
-        btn.setOnClickListener(this);
 
-        // Creating a TargetView and assigning a Showcase Type - Circle or Rectangle
-        Target target = new TargetView(btn, ShowcaseType.CIRCLE);
-
-        // Creating the ShowcaseTutorial and setting up the target, title and button
+        Target target = new TargetView(btn, TargetView.ShowcaseType.RECTANGLE);
+        
         new ShowcaseView.Builder(this)
                 .setTarget(target)
-                .setDescription("This is the super-duper-mega-cool app! Click on this button to start it now!",
-                        ItemPosition.TOP_CENTER)
-                .setButton(ItemPosition.BOTTOM_CENTER)
+                .setDescription("Showcase with custom theme! Yahoo! :)", PositionsUtil.ItemPosition.CENTER)
+                .setButton(PositionsUtil.ItemPosition.TOP_CENTER)
+                .setCustomTheme(R.style.CustomShowcaseViewTheme)
                 .build();
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn:
-                Intent newIntent = new Intent(MainActivity.this, CustomThemeShowcase.class);
-                startActivity(newIntent);
-                break;
-        }
     }
 }

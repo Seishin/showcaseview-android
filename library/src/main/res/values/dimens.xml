@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="showcase_target_border_size">10dp</dimen>
+    <dimen name="showcase_target_margin">0dp</dimen>
+    
+    <dimen name="showcase_desc_text_size">20sp</dimen>
+    <dimen name="showcase_desc_margin">0dp</dimen>
+    <dimen name="showcase_desc_padding">20dp</dimen>
+
+    <dimen name="showcase_btn_text">18sp</dimen>
+    <dimen name="showcase_btn_margin">0dp</dimen>
+</resources>

@@ -1,8 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="ShowcaseView">
+        <item name="showcase_background">@color/showcase_bg</item>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+        <!-- Target -->
+        <item name="showcase_target_border_color">@color/showcase_target_border_color</item>
+        <item name="showcase_target_border_size">@dimen/showcase_target_border_size</item>
+        <item name="showcase_target_margin">@dimen/showcase_target_margin</item>
+        
+        <!-- Button -->
+        <item name="showcase_btn_text_color">@color/showcase_btn_text</item>
+        <item name="showcase_btn_text_size">@dimen/showcase_btn_text</item>
+        <item name="showcase_btn_margin">@dimen/showcase_btn_margin</item>
+        <item name="showcase_btn_background">@color/showcase_btn_background</item>
+        
+        <!-- Description -->
+        <item name="showcase_desc_text_color">@color/showcase_desc_text</item>
+        <item name="showcase_desc_text_size">@dimen/showcase_desc_text_size</item>
+        <item name="showcase_desc_margin">@dimen/showcase_desc_margin</item>
     </style>
-
 </resources>

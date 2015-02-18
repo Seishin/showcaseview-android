@@ -17,7 +17,7 @@
  *
  */
 
-package com.naughtyspirit.showcasetutorial.targets;
+package com.naughtyspirit.showcaseview.targets;
 
 /**
  * Created by Seishin <atanas@naughtyspirit.co>

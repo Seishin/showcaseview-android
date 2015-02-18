@@ -17,11 +17,12 @@
  *
  */
 
-package com.naughtyspirit.showcasetutorial;
+package com.naughtyspirit.showcaseview;
 
 import android.view.View;
 
-import com.naughtyspirit.showcasetutorial.targets.Target;
+import com.naughtyspirit.showcaseview.targets.Target;
+import com.naughtyspirit.showcaseview.utils.PositionsUtil.ItemPosition;
 
 /**
  * Created by Seishin <atanas@naughtyspirit.co>
@@ -29,19 +30,16 @@ import com.naughtyspirit.showcasetutorial.targets.Target;
  *
  * NaughtySpirit 2015
  */
-public interface ShowcaseTutorialInterface {
-
-    public static enum ItemPosition {
-        TOP_LEFT, TOP_CENTER, TOP_RIGHT,
-        CENTER_LEFT, CENTER, CENTER_RIGHT,
-        BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT
-    }
+public interface ShowcaseViewAPI {
 
     public void setTarget(Target target);
     public Target getTarget();
 
     public void setBackgroundColor(String color);
     public void setBackgroundColor(int color);
+
+    public void setBorderColor(String color);
+    public void setBorderColor(int color);
 
     public void setDescription(String description, ItemPosition position);
     public void setButton(String text, ItemPosition position);

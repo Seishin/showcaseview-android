@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="showcase_bg">#23a2eb</color>
+    <color name="showcase_target_border_color">#B423a2eb</color>
+    
+    <color name="showcase_desc_text">#FFFFFF</color>
+    <color name="showcase_btn_text">#FFFFFF</color>
+    <color name="showcase_btn_background">@android:color/transparent</color>
+</resources>

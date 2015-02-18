@@ -1,4 +1,4 @@
-package com.naughtyspirit.showcasetutorial;
+package com.naughtyspirit.showcaseview;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

@@ -17,7 +17,7 @@
  *
  */
 
-package com.naughtyspirit.showcasetutorial.targets;
+package com.naughtyspirit.showcaseview.targets;
 
 import android.os.Build;
 import android.view.View;

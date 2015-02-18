@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    </style>
+    
+    <style name="CustomShowcaseViewTheme" parent="ShowcaseView">
+        <item name="showcase_background">#F0000000</item>
+        
+        <!-- Target -->
+        <item name="showcase_target_border_color">#96000000</item>
+        
+        <!-- Button -->
+        <item name="showcase_btn_text_size">23sp</item>
+        <item name="showcase_btn_background">#B4FFFFFF</item>
+    </style>
+</resources>

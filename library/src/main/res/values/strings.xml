@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">ShowcaseTutorial</string>
+    <string name="app_name">Showcase Tutorial</string>
+    <string name="showcase_button">HIDE</string>
+    <string name="showcase_description">Showcase Description</string>
 </resources>
