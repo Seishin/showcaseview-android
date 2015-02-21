@@ -17,34 +17,22 @@
  *
  */
 
-package com.naughtyspirit.showcaseview;
-
-import android.view.View;
-
-import com.naughtyspirit.showcaseview.targets.Target;
-import com.naughtyspirit.showcaseview.utils.PositionsUtil.ItemPosition;
+package co.naughtyspirit.showcaseview.targets;
 
 /**
  * Created by Seishin <atanas@naughtyspirit.co>
- * on 2/10/15.
+ * on 2/11/15.
  *
  * NaughtySpirit 2015
  */
-public interface ShowcaseViewAPI {
+public interface Target {
 
-    public void setTarget(Target target);
-    public Target getTarget();
+    public TargetView.ShowcaseType getType();
 
-    public void setBackgroundColor(String color);
-    public void setBackgroundColor(int color);
+    public void setCircleLocation(float x, float y, float radius);
+    public void setRectLocation(float left, float top, float right, float bottom);
 
-    public void setBorderColor(String color);
-    public void setBorderColor(int color);
+    public float[] getLocation();
 
-    public void setDescription(String description, ItemPosition position);
-    public void setButton(String text, ItemPosition position);
-
-    public void setButtonOnClickListener(View.OnClickListener listener);
-
-    public void hide();
+    public void setTargetMargin(int margin);
 }

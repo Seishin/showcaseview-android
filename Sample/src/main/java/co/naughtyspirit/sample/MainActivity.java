@@ -17,7 +17,7 @@
  *
  */
 
-package com.naughtyspirit.sample;
+package co.naughtyspirit.sample;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,11 +26,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-import com.naughtyspirit.showcaseview.ShowcaseView;
-import com.naughtyspirit.showcaseview.targets.Target;
-import com.naughtyspirit.showcaseview.targets.TargetView;
-import com.naughtyspirit.showcaseview.targets.TargetView.ShowcaseType;
-import com.naughtyspirit.showcaseview.utils.PositionsUtil.ItemPosition;
+import co.naughtyspirit.showcaseview.ShowcaseView;
+import co.naughtyspirit.showcaseview.targets.Target;
+import co.naughtyspirit.showcaseview.targets.TargetView;
+import co.naughtyspirit.showcaseview.targets.TargetView.ShowcaseType;
+import co.naughtyspirit.showcaseview.utils.PositionsUtil.ItemPosition;
 
 /**
  * Created by Seishin <atanas@naughtyspirit.co>
@@ -52,8 +52,9 @@ public class MainActivity extends ActionBarActivity implements OnClickListener{
         Target target = new TargetView(btn, ShowcaseType.CIRCLE);
 
         // Creating the ShowcaseTutorial and setting up the target, title and button
-        new ShowcaseView.Builder(this)
+        new ShowcaseView.Builder(this, MainActivity.this.getClass().getName())
                 .setTarget(target)
+                .setOneShot(false)
                 .setDescription("This is the super-duper-mega-cool app! Click on this button to start it now!",
                         ItemPosition.TOP_CENTER)
                 .setButton(ItemPosition.BOTTOM_CENTER)

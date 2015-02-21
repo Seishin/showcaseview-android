@@ -17,7 +17,7 @@
  *  
  */
 
-package com.naughtyspirit.showcaseview.utils;
+package co.naughtyspirit.showcaseview.utils;
 
 import android.content.Context;
 import android.view.ViewGroup;

@@ -17,7 +17,7 @@
  *
  */
 
-package com.naughtyspirit.showcaseview;
+package co.naughtyspirit.showcaseview;
 
 import android.app.Activity;
 import android.content.Context;
@@ -38,10 +38,10 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.naughtyspirit.showcaseview.targets.Target;
-import com.naughtyspirit.showcaseview.targets.TargetView;
-import com.naughtyspirit.showcaseview.utils.PositionsUtil;
-import com.naughtyspirit.showcaseview.utils.PositionsUtil.ItemPosition;
+import co.naughtyspirit.showcaseview.targets.Target;
+import co.naughtyspirit.showcaseview.targets.TargetView;
+import co.naughtyspirit.showcaseview.utils.PositionsUtil;
+import co.naughtyspirit.showcaseview.utils.SharedPreferencesUtil;
 
 /**
  * Created by Seishin <atanas@naughtyspirit.co>
@@ -66,7 +66,8 @@ public class ShowcaseView extends RelativeLayout implements ShowcaseViewAPI {
     
     private int targetBorderSize;
     private int targetMargin;
-    
+    private String showcaseTag;
+
     public ShowcaseView(Context ctx) {
         this(ctx, null, R.style.ShowcaseView);
     }
@@ -108,7 +109,7 @@ public class ShowcaseView extends RelativeLayout implements ShowcaseViewAPI {
 
     private void initUI() {
         descriptionView = (TextView) LayoutInflater.from(ctx).inflate(R.layout.showcase_description, null);
-        addView(descriptionView, PositionsUtil.configureParams(ctx, ItemPosition.TOP_CENTER));
+        addView(descriptionView, PositionsUtil.configureParams(ctx, PositionsUtil.ItemPosition.TOP_CENTER));
 
         buttonView = (Button) LayoutInflater.from(ctx).inflate(R.layout.showcase_button, null);
         buttonView.setOnClickListener(new OnClickListener() {
@@ -117,7 +118,7 @@ public class ShowcaseView extends RelativeLayout implements ShowcaseViewAPI {
                 hide();
             }
         });
-        addView(buttonView, PositionsUtil.configureParams(ctx, ItemPosition.BOTTOM_CENTER));
+        addView(buttonView, PositionsUtil.configureParams(ctx, PositionsUtil.ItemPosition.BOTTOM_CENTER));
     }
 
     public void setStyle(int style) {
@@ -189,7 +190,7 @@ public class ShowcaseView extends RelativeLayout implements ShowcaseViewAPI {
     }
 
     @Override
-    public void setDescription(String description, ItemPosition position) {
+    public void setDescription(String description, PositionsUtil.ItemPosition position) {
         if (!TextUtils.isEmpty(description)) {
             descriptionView.setText(description);
         }
@@ -199,13 +200,33 @@ public class ShowcaseView extends RelativeLayout implements ShowcaseViewAPI {
     }
 
     @Override
-    public void setButton(String text, ItemPosition position) {
+    public void setButton(String text, PositionsUtil.ItemPosition position) {
         if (!TextUtils.isEmpty(text)) {
             buttonView.setText(text);
         }
         
         buttonView.setLayoutParams(PositionsUtil.configureParams(ctx, position));
         invalidate();
+    }
+
+    @Override
+    public void setShowcaseTag(String tag) {
+        this.showcaseTag = tag;
+    }
+
+    @Override
+    public String getShowcaseTag() {
+        return showcaseTag;
+    }
+
+    @Override
+    public void setOneShot(boolean isOneShot) {
+        SharedPreferencesUtil.setPreference(ctx, showcaseTag, isOneShot);
+    }
+
+    @Override
+    public boolean hasShot() {
+        return SharedPreferencesUtil.getBooleanPreference(ctx, showcaseTag);
     }
 
     @Override
@@ -273,17 +294,31 @@ public class ShowcaseView extends RelativeLayout implements ShowcaseViewAPI {
     public static class Builder {
         private final Activity activity;
         private ShowcaseView showcaseView;
+        private boolean isOneShot;
 
         /**
          * Builder class for easier ShowcaseView creation.
          *
          * @param activity host activity reference
+         * @param tag showcaseView tag
          */
-        public Builder(Activity activity) {
+        public Builder(Activity activity, String tag) {
             this.activity = activity;
             showcaseView = new ShowcaseView(activity);
+            showcaseView.setShowcaseTag(tag);
         }
 
+        /**
+         * Setting up the current ShowcaseView whether to show once or always.
+         *
+         * @param isOneShot
+         * @return
+         */
+        public Builder setOneShot(boolean isOneShot) {
+            this.isOneShot = isOneShot;
+            return this;
+        }
+        
         /**
          * Setting up a custom theme defined in your application's style.xml file.
          *
@@ -297,7 +332,7 @@ public class ShowcaseView extends RelativeLayout implements ShowcaseViewAPI {
         /**
          * Setting up the the showcase target view.
          *
-         * @param target {@link com.naughtyspirit.showcaseview.targets.TargetView} to be showcased
+         * @param target {@link co.naughtyspirit.showcaseview.targets.TargetView} to be showcased
          */
         public Builder setTarget(Target target) {
             showcaseView.setTarget(target);
@@ -306,9 +341,9 @@ public class ShowcaseView extends RelativeLayout implements ShowcaseViewAPI {
 
         /**
          * Setting up the description position on the screen.
-         * Default position is TOP_CENTER {@link com.naughtyspirit.showcaseview.utils.PositionsUtil.ItemPosition}
+         * Default position is TOP_CENTER {@link co.naughtyspirit.showcaseview.utils.PositionsUtil.ItemPosition}
          *
-         * @param position desired {@link com.naughtyspirit.showcaseview.utils.PositionsUtil.ItemPosition}
+         * @param position desired {@link co.naughtyspirit.showcaseview.utils.PositionsUtil.ItemPosition}
          */
         public Builder setDescription(PositionsUtil.ItemPosition position) {
             setDescription(null, position);
@@ -317,44 +352,47 @@ public class ShowcaseView extends RelativeLayout implements ShowcaseViewAPI {
 
         /**
          * Setting up the text's text and its position on the screen.
-         * Default position is TOP_CENTER {@link com.naughtyspirit.showcaseview.utils.PositionsUtil.ItemPosition}
+         * Default position is TOP_CENTER {@link co.naughtyspirit.showcaseview.utils.PositionsUtil.ItemPosition}
          *
          * @param text description text
-         * @param position desired {@link com.naughtyspirit.showcaseview.utils.PositionsUtil.ItemPosition}
+         * @param position desired {@link co.naughtyspirit.showcaseview.utils.PositionsUtil.ItemPosition}
          */
-        public Builder setDescription(String text, ItemPosition position) {
+        public Builder setDescription(String text, PositionsUtil.ItemPosition position) {
             showcaseView.setDescription(text, position);
             return this;
         }
 
         /**
          * Setting up the button position on the screen.
-         * Default position is BOTTOM_CENTER {@link com.naughtyspirit.showcaseview.utils.PositionsUtil.ItemPosition}
+         * Default position is BOTTOM_CENTER {@link co.naughtyspirit.showcaseview.utils.PositionsUtil.ItemPosition}
          *
-         * @param position desired {@link com.naughtyspirit.showcaseview.utils.PositionsUtil.ItemPosition}
+         * @param position desired {@link co.naughtyspirit.showcaseview.utils.PositionsUtil.ItemPosition}
          */
-        public Builder setButton(ItemPosition position) {
+        public Builder setButton(PositionsUtil.ItemPosition position) {
             setButton(null, position);
             return this;
         }
 
         /**
          * Setting up the button's text and its position on the screen.
-         * Default position is BOTTOM_CENTER {@link com.naughtyspirit.showcaseview.utils.PositionsUtil.ItemPosition}
+         * Default position is BOTTOM_CENTER {@link co.naughtyspirit.showcaseview.utils.PositionsUtil.ItemPosition}
          *
          * @param text button text
-         * @param position desired {@link com.naughtyspirit.showcaseview.utils.PositionsUtil.ItemPosition}
+         * @param position desired {@link co.naughtyspirit.showcaseview.utils.PositionsUtil.ItemPosition}
          */
-        public Builder setButton(String text, ItemPosition position) {
+        public Builder setButton(String text, PositionsUtil.ItemPosition position) {
             showcaseView.setButton(text, position);
             return this;
         }
 
         /**
-         * Building and presenting the {@link com.naughtyspirit.showcaseview.ShowcaseView} on the screen.
+         * Building and presenting the {@link ShowcaseView} on the screen.
          */
         public ShowcaseView build() {
-            ((ViewGroup) activity.getWindow().getDecorView()).addView(showcaseView);
+            if (!showcaseView.hasShot()) {
+                ((ViewGroup) activity.getWindow().getDecorView()).addView(showcaseView);
+                showcaseView.setOneShot(isOneShot);
+            }
             return showcaseView;
         }
     }

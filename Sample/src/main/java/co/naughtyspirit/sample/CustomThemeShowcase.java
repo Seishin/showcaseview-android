@@ -17,16 +17,16 @@
  *
  */
 
-package com.naughtyspirit.sample;
+package co.naughtyspirit.sample;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.widget.Button;
 
-import com.naughtyspirit.showcaseview.ShowcaseView;
-import com.naughtyspirit.showcaseview.targets.Target;
-import com.naughtyspirit.showcaseview.targets.TargetView;
-import com.naughtyspirit.showcaseview.utils.PositionsUtil;
+import co.naughtyspirit.showcaseview.ShowcaseView;
+import co.naughtyspirit.showcaseview.targets.Target;
+import co.naughtyspirit.showcaseview.targets.TargetView;
+import co.naughtyspirit.showcaseview.utils.PositionsUtil;
 
 /**
  * Created by Seishin <atanas@naughtyspirit.co>
@@ -44,8 +44,9 @@ public class CustomThemeShowcase extends ActionBarActivity {
 
         Target target = new TargetView(btn, TargetView.ShowcaseType.RECTANGLE);
         
-        new ShowcaseView.Builder(this)
+        new ShowcaseView.Builder(this, CustomThemeShowcase.this.getClass().getName())
                 .setTarget(target)
+                .setOneShot(true)
                 .setDescription("Showcase with custom theme! Yahoo! :)", PositionsUtil.ItemPosition.CENTER)
                 .setButton(PositionsUtil.ItemPosition.TOP_CENTER)
                 .setCustomTheme(R.style.CustomShowcaseViewTheme)

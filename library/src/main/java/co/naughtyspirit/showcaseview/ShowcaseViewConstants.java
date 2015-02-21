@@ -1,7 +1,7 @@
 /*
  *
  *  * Copyright 2015 Atanas Dimitrov <atanas@naughtyspirit.co>
- *  *                 NaughtySpirit 2014
+ *  *                 NaughtySpirit 2014 
  *  *
  *  * Licensed under the Apache License, Version 2.0 (the "License");
  *  * you may not use this file except in compliance with the License.
@@ -14,25 +14,17 @@
  *  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *  * See the License for the specific language governing permissions and
  *  * limitations under the License.
- *
+ *  
  */
 
-package com.naughtyspirit.showcaseview.targets;
+package co.naughtyspirit.showcaseview;
 
 /**
  * Created by Seishin <atanas@naughtyspirit.co>
- * on 2/11/15.
- *
+ * on 2/12/15.
  * NaughtySpirit 2015
  */
-public interface Target {
-
-    public TargetView.ShowcaseType getType();
-
-    public void setCircleLocation(float x, float y, float radius);
-    public void setRectLocation(float left, float top, float right, float bottom);
-
-    public float[] getLocation();
-
-    public void setTargetMargin(int margin);
+public class ShowcaseViewConstants {
+    
+    public static final String KEY_ONE_SHOT = "one_shot_";
 }

@@ -17,7 +17,7 @@
  *
  */
 
-package com.naughtyspirit.showcaseview.targets;
+package co.naughtyspirit.showcaseview.targets;
 
 import android.os.Build;
 import android.view.View;
@@ -40,6 +40,7 @@ public class TargetView implements Target {
         CIRCLE, RECTANGLE
     }
 
+    @SuppressWarnings("deprecation")
     public TargetView(View target, ShowcaseType showCaseType) {
         this.view = target;
         this.type = showCaseType;
