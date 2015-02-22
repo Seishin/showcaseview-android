@@ -3,6 +3,12 @@ It's a small library for showcase and highlight specific parts of your app to th
 
 ![alt tag](https://raw.githubusercontent.com/Seishin/showcase-tutorial/master/Images/Screenshot_1.png) ![alt tag](https://raw.githubusercontent.com/Seishin/showcase-tutorial/master/Images/Screenshot_2.png)
 
+### Setup
+If you're using Gradle-based project, just add this line to the dependency block:
+```java
+compile 'co.naughtyspirit:showcaseview-library:0.0.1'
+```
+
 ### Usage
 It's very simple to create a showcase with the Builder Pattern:
 ```java
